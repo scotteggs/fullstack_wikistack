@@ -12,6 +12,17 @@ router.get('/', function (req, res, next) {
   res.render('index')
 });
 
+
+
+
+
+
+
+
+
+
+
+
 // // get a single tweet
 // router.get('/users/:name/tweets/:id', function(req, res, next) {
 //   req.params.id = Number(req.params.id)
