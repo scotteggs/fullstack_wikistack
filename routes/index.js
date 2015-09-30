@@ -1,15 +1,20 @@
 var express = require('express')
-
 var router = express.Router()
-
-
+var Promise = require('bluebird')
 module.exports = router
 
+var models = require('../models/');
+var Page = models.Page; 
+var User = models.User; 
 
 
 
 router.get('/', function (req, res, next) {
-  res.render('index')
+  Page.find().exec()
+    .then(function(pages) {
+      console.log(pages)
+      res.render('index', pages)
+    }).catch(next);
 });
 
 
