@@ -23,13 +23,6 @@ pageSchema.virtual('route').get(function (){
 });
 
 
-
-pageSchema.pre('validate', function (next) {
-	
-	this.urlTitle = this.generateUrlTitle(this.title);
-	next();	
-})
-
 pageSchema.generateUrlTitle  = function (title) {
 	  
 	  if (typeof title !== 'undefined' && title !== '') {
@@ -42,12 +35,13 @@ pageSchema.generateUrlTitle  = function (title) {
 	  }
 }
 
-
-
-
-
-
-
+pageSchema.pre('validate', function (next) {
+	console.log('this', this)
+	console.log('title', this.title)
+	this.urlTitle = pageSchema.generateUrlTitle(this.title);
+	console.log('this urlTitle', this.urlTitle)
+	next();	
+})
 
 
 var userSchema = new mongoose.Schema({
